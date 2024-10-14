@@ -1,0 +1,777 @@
+{
+	"info": {
+		"_postman_id": "5d00e923-6bc2-434e-936a-55fb5ee3df56",
+		"name": "animal-rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27529365"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Cat",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "legs",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "class",
+							"value": "Mammal",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/animal",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"animal"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success to create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Caat",
+									"type": "text"
+								},
+								{
+									"key": "legs",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "class",
+									"value": "Mammal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/v1/animal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"animal"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:02:29 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"success to create animal\"\n}"
+				},
+				{
+					"name": "Error duplicate record by name",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Caat",
+									"type": "text"
+								},
+								{
+									"key": "legs",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "class",
+									"value": "Mammal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/v1/animal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"animal"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:02:56 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"animal already exists\"\n}"
+				},
+				{
+					"name": "Error validation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Caat",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "legs",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "class",
+									"value": "Mammal",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/v1/animal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"animal"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:05:12 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "303"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Key: 'CreateAnimalRequest.Name' Error:Field validation for 'Name' failed on the 'required' tag\\nKey: 'CreateAnimalRequest.Class' Error:Field validation for 'Class' failed on the 'required' tag\\nKey: 'CreateAnimalRequest.Legs' Error:Field validation for 'Legs' failed on the 'required' tag\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Or Create",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Dog",
+							"type": "text"
+						},
+						{
+							"key": "legs",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "class",
+							"value": "Mammal",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/animal/10",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"animal",
+						"10"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success to create",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Dog",
+									"type": "text"
+								},
+								{
+									"key": "legs",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "class",
+									"value": "Mammal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/v1/animal/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"animal",
+								"7"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:06:06 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"success to create animal\"\n}"
+				},
+				{
+					"name": "Success to update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rabbit",
+									"type": "text"
+								},
+								{
+									"key": "legs",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "class",
+									"value": "Mammal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/v1/animal/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"animal",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:06:24 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"success to update animal\"\n}"
+				},
+				{
+					"name": "Error duplicate record by name",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Dog",
+									"type": "text"
+								},
+								{
+									"key": "legs",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "class",
+									"value": "Mammal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/v1/animal/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"animal",
+								"7"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:17:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"animal already exists\"\n}"
+				},
+				{
+					"name": "Update or Create",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Dog",
+									"type": "text"
+								},
+								{
+									"key": "legs",
+									"value": "nine",
+									"type": "text"
+								},
+								{
+									"key": "class",
+									"value": "Mammal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/v1/animal/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"animal",
+								"10"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:23:32 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "146"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"code=400, message=strconv.ParseUint: parsing \\\"nine\\\": invalid syntax, internal=strconv.ParseUint: parsing \\\"nine\\\": invalid syntax\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Find",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/animal",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"animal"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success to find",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/animal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"animal"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:13:23 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "142"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 8,\n            \"name\": \"Cat\",\n            \"class\": \"Mammal\",\n            \"legs\": 4\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Dog\",\n            \"class\": \"Mammal\",\n            \"legs\": 4\n        }\n    ],\n    \"message\": \"success to get animals\"\n}"
+				},
+				{
+					"name": "Error not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/animal",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"animal"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:20:46 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"animal not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Find By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/animal/9",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"animal",
+						"9"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Error not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/animal/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"animal",
+								"11"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:09:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"animal not found\"\n}"
+				},
+				{
+					"name": "Success to find",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/animal/9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"animal",
+								"9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:15:02 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "91"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 9,\n        \"name\": \"Dog\",\n        \"class\": \"Mammal\",\n        \"legs\": 4\n    },\n    \"message\": \"success to get animal\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/animal/8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"animal",
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success to delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/animal/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"animal",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:13:58 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"success to delete animal\"\n}"
+				},
+				{
+					"name": "Errror to delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/animal/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"animal",
+								"5"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 14 Oct 2024 00:13:40 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"animal not found\"\n}"
+				}
+			]
+		}
+	]
+}

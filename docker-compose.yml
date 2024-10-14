@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    restart: on-failure
+    environment:
+      - REDIS_HOST=redis:6379
+      - REDIS_PASSWORD=
+      - DB_USERNAME=root
+      - DB_PASSWORD=
+      - DB_PORT=3306
+      - DB_HOST=mysql
+      - DB_NAME=animal-rest
+    depends_on:
+      - redis
+      - mysql
+
+  redis:
+    image: redis:6.2
+    container_name: redis
+    ports:
+      - "63791:6379"
+    volumes:
+      - redis_data:/data
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "33061:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: animal-rest
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  redis_data:
+  mysql_data:
